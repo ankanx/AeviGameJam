@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SceneLoader
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - AnimationsUI
   - 
   - 
   - 
@@ -40,4 +41,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Everything Elser
+    uniqueID: 3305610171
+    locked: 0
+  - name: Ui
+    uniqueID: 1759558607
+    locked: 0
+  - name: UiAnim
+    uniqueID: 2270909789
     locked: 0
