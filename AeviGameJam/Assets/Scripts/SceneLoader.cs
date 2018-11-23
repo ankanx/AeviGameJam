@@ -47,7 +47,7 @@ public class SceneLoader : MonoBehaviour {
 
             yield return null;
         }
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         loadinganim.SetTrigger("Finished");
         yield return new WaitForSeconds(1);
         LoadingScreenUI.SetActive(false);
