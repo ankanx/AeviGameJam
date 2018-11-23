@@ -1,9 +1,9 @@
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-Assets/AssetStoreTools*
+AeviGameJam/[Ll]ibrary/
+AeviGameJam/[Tt]emp/
+AeviGameJam/[Oo]bj/
+AeviGameJam/[Bb]uild/
+AeviGameJam/[Bb]uilds/
+AeviGameJam/Assets/AssetStoreTools*
 
 # Visual Studio cache directory
 .vs/
