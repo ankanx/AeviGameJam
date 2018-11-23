@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 88115740}
   - component: {fileID: 88115739}
   - component: {fileID: 88115741}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Loading
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1312,7 +1312,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1381512550
 RectTransform:
@@ -1543,7 +1543,7 @@ GameObject:
   - component: {fileID: 2014419002}
   - component: {fileID: 2014419004}
   - component: {fileID: 2014419003}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Loading Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
