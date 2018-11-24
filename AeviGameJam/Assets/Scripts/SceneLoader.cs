@@ -12,7 +12,6 @@ public class SceneLoader : MonoBehaviour {
 
     private void Start()
     {
-        
         DontDestroyOnLoad(gameObject);
 
         if (Instance != null && Instance != this)
@@ -27,20 +26,15 @@ public class SceneLoader : MonoBehaviour {
 
     public void LoadScene (int SceneIndex,SaveData save)
     {
+        LoadingScreenUI.GetComponent<Canvas>().enabled = true;
         StartCoroutine(LoadAsync(SceneIndex,save));
     }
 
     IEnumerator LoadAsync (int SceneIndex, SaveData save)
     {
         isLoading = true;
-        if(SceneIndex == 1)
-        {
-            Debug.Log("test");
-        }
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneIndex);
-
-        LoadingScreenUI.SetActive(true);
 
         while (!operation.isDone)
         {
@@ -50,9 +44,8 @@ public class SceneLoader : MonoBehaviour {
         yield return new WaitForSeconds(3);
         loadinganim.SetTrigger("Finished");
         yield return new WaitForSeconds(1);
-        LoadingScreenUI.SetActive(false);
-
-
+        loadinganim.SetTrigger("Done");
+        LoadingScreenUI.GetComponent<Canvas>().enabled = false;
         isLoading = false;
 
 
