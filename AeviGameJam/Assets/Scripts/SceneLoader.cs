@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 public class SceneLoader : MonoBehaviour {
 
     public static SceneLoader Instance { get; set; }
@@ -10,7 +11,8 @@ public class SceneLoader : MonoBehaviour {
     public bool isLoading = false;
     public Animator loadinganim;
     public TextMeshProUGUI loadingText;
-
+    public Animator fadepanel;
+    public Image animimg;
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -34,7 +36,11 @@ public class SceneLoader : MonoBehaviour {
 
     IEnumerator LoadAsync (int SceneIndex, SaveData save)
     {
+
         isLoading = true;
+        fadepanel.SetTrigger("FadeOut");
+        yield return new WaitForSeconds(1);
+        animimg.enabled = true;
         loadingText.text = "Loading";
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneIndex);
 
@@ -47,7 +53,11 @@ public class SceneLoader : MonoBehaviour {
         loadinganim.SetTrigger("Finished");
         loadingText.text = "";
         yield return new WaitForSeconds(1);
+
+        fadepanel.SetTrigger("FadeIn");
+        yield return new WaitForSeconds(1);
         loadinganim.SetTrigger("Done");
+        animimg.enabled = false;
         LoadingScreenUI.GetComponent<Canvas>().enabled = false;
         isLoading = false;
 
