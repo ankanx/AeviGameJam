@@ -98,7 +98,7 @@ public class DialogueManager : MonoBehaviour {
             List<List<string>> listOfCheckpoint = FindObjectOfType<DialogueList>().listOfCheckpoint;
             StartDialogue(listOfCheckpoint);
         }
-        else if ((collision.gameObject.tag == "Player") && (gameObject.tag == "BigGobling"))
+        else if ((collision.gameObject.tag == "Player") && (gameObject.tag == "BigGoblin"))
         {
             List<List<string>> listOfBigGoblinToPlayer = FindObjectOfType<DialogueList>().listOfBigGoblinToPlayer;
             StartDialogue(listOfBigGoblinToPlayer);
