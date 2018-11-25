@@ -17,7 +17,6 @@ public class Pickup : MonoBehaviour {
         
         if (collision.CompareTag("Player"))
         {
-            Debug.Log(inventory.slots.Length);
             for (int i = 0; i < inventory.slots.Length; i++)
             {
                 
