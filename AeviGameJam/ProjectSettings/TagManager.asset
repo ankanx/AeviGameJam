@@ -10,6 +10,7 @@ TagManager:
   - FadePanelWorld
   - Inventory
   - Goblin
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - MapIcon
   - Player
   - Enemy
-  - 
+  - Ground
   - 
   - 
   - 
