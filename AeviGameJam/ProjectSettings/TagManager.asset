@@ -11,6 +11,7 @@ TagManager:
   - Inventory
   - Goblin
   - Checkpoint
+  - BigGoblin
   layers:
   - Default
   - TransparentFX
