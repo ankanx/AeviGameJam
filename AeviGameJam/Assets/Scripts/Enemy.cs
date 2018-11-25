@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour {
 	void Update () {
         if (target.CompareTag("Player"))
         {
-            anim.SetBool("Iswalking", true);
+            anim.SetBool("walking", true);
             movementVector = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             transform.position = movementVector;
             /*if (movementVector.x > 0.5)
@@ -42,10 +42,6 @@ public class Enemy : MonoBehaviour {
             anim.SetFloat("X", movementVector.x);
             anim.SetFloat("Y", movementVector.y);
 
-        }
-        else
-        {
-            anim.SetBool("Iswalking", false);
         }
 	}
 
