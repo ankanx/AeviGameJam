@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -95,8 +95,13 @@ public class DialogueManager : MonoBehaviour {
         }
         else if ((collision.gameObject.tag == "Player") && (gameObject.tag == "Checkpoint"))
         {
-            List<List<string>> listOfGoblinToGoblin = FindObjectOfType<DialogueList>().listOfGoblinToGoblin;
-            StartDialogue(listOfGoblinToGoblin);
+            List<List<string>> listOfCheckpoint = FindObjectOfType<DialogueList>().listOfCheckpoint;
+            StartDialogue(listOfCheckpoint);
+        }
+        else if ((collision.gameObject.tag == "Player") && (gameObject.tag == "BigGoblin"))
+        {
+            List<List<string>> listOfBigGoblinToPlayer = FindObjectOfType<DialogueList>().listOfBigGoblinToPlayer;
+            StartDialogue(listOfBigGoblinToPlayer);
         }
     }
 

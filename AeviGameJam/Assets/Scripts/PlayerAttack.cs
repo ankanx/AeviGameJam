@@ -44,9 +44,18 @@ public class PlayerAttack : MonoBehaviour {
             if (Input.GetButtonDown("Submit"))
             {
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position,attackRange, whatIsEnemy);
+                
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
-                    enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
+                    if(enemiesToDamage[i].GetType() == typeof(CircleCollider2D))
+                    {
+
+                    }
+                    else
+                    {
+                        enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
+                    }
+                    
                 }
                 timeBetweenAttack = startTimeBtwAttack;
             }
