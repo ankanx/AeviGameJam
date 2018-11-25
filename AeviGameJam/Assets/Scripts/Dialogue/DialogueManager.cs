@@ -93,6 +93,11 @@ public class DialogueManager : MonoBehaviour {
             List<List<string>> listOfGoblinToGoblin = FindObjectOfType<DialogueList>().listOfGoblinToGoblin;
             StartDialogue(listOfGoblinToGoblin);
         }
+        else if ((collision.gameObject.tag == "Player") && (gameObject.tag == "Checkpoint"))
+        {
+            List<List<string>> listOfGoblinToGoblin = FindObjectOfType<DialogueList>().listOfGoblinToGoblin;
+            StartDialogue(listOfGoblinToGoblin);
+        }
     }
 
 }
