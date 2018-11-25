@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - SceneLoader
+  - GameHandler
+  - FadePanel
+  - FadePanelWorld
   - Goblin
   layers:
   - Default
@@ -17,7 +20,7 @@ TagManager:
   - 
   - AnimationsUI
   - MapIcon
-  - 
+  - Player
   - 
   - 
   - 

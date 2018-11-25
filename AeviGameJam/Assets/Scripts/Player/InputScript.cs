@@ -49,21 +49,21 @@ public class InputScript : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
 
-        Vector2 movementVector = new Vector2(h * moveMultiplier, v * moveMultiplier);
+        Vector2 movementVector = new Vector2(h , v);
 
-        /*
-        if(current != Vector2.zero && rigidbody2d.bodyType == RigidbodyType2D.Dynamic)
+        
+        if(movementVector != Vector2.zero && rigidbody2d.bodyType == RigidbodyType2D.Dynamic)
         {
-            animator.SetBool("isWalking", true);
-            animator.SetFloat("input_x", current.x);
-            animator.SetFloat("input_y", current.y);
+            animator.SetBool("IsWalking", true);
+            animator.SetFloat("InputX", movementVector.x);
+            animator.SetFloat("InputY", movementVector.y);
 
         }
         else
         {
-            animator.SetBool("isWalking", false);
+            animator.SetBool("IsWalking", false);
         }
-
+        /*
         if (Input.GetKeyDown(KeyCode.M))
         {
             Debug.Log("some");
@@ -79,7 +79,7 @@ public class InputScript : MonoBehaviour
           rb2d.velocity = new Vector2(0, 0);
           
         }*/
-
+        movementVector = movementVector * moveMultiplier;
         rigidbody2d.MovePosition(rigidbody2d.position + movementVector * Time.deltaTime);
 
     }

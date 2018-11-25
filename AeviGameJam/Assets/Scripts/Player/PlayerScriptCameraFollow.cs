@@ -11,6 +11,8 @@ public class PlayerScriptCameraFollow : MonoBehaviour
 
     void Start()
     {
+
+       
         camera = GetComponent<Camera>();
         offset = transform.position - Player.transform.position;
     }
