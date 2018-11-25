@@ -18,6 +18,8 @@ public class InputScript : MonoBehaviour
     public AudioClip audio_jump;
     public AudioClip audio_walk;
     public AudioSource audio_source;
+    public float horizvect;
+    public float verticalvect;
 
 
     void Start()
@@ -28,20 +30,9 @@ public class InputScript : MonoBehaviour
         rigidbody2d.gravityScale = 0;
     }
 
-
-    // Update is called once per frame
     void Update()
     {
-        /*
-        if (Input.GetButtonDown("Cancel") && menu.transform.localScale != new Vector3(1, 1, 1))
-        {
-            menu.transform.localScale = new Vector3(1, 1,1);
-        }
-        else if(Input.GetButtonDown("Cancel") && menu.transform.localScale != new Vector3(0, 0, 0))
-        {
-            menu.transform.localScale = new Vector3(0, 0,0);
-        }
-        */
+
     }
 
     void FixedUpdate()
@@ -57,28 +48,14 @@ public class InputScript : MonoBehaviour
             animator.SetBool("IsWalking", true);
             animator.SetFloat("InputX", movementVector.x);
             animator.SetFloat("InputY", movementVector.y);
-
+            horizvect = h;
+            verticalvect = v;
         }
         else
         {
             animator.SetBool("IsWalking", false);
         }
-        /*
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            Debug.Log("some");
-            GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>().AddItem("sword");
-        } */
 
-
-
-        //animator.SetFloat("Speed", Mathf.Abs(h));
-        /*
-        if ((Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)  && grounded)
-          {
-          rb2d.velocity = new Vector2(0, 0);
-          
-        }*/
         movementVector = movementVector * moveMultiplier;
         rigidbody2d.MovePosition(rigidbody2d.position + movementVector * Time.deltaTime);
 

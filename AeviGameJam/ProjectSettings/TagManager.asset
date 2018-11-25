@@ -22,7 +22,7 @@ TagManager:
   - AnimationsUI
   - MapIcon
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: UiAnim
     uniqueID: 2270909789
+    locked: 0
+  - name: Enemy
+    uniqueID: 2601026989
     locked: 0
