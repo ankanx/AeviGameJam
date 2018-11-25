@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4479615856664708}
   - component: {fileID: 212656949494326812}
   - component: {fileID: 95238514859527146}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DialogueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,9 @@ GameObject:
   - component: {fileID: 58363610770686562}
   - component: {fileID: 50384902378291758}
   - component: {fileID: 114271027649810002}
-  m_Layer: 0
+  - component: {fileID: 95418897017291848}
+  - component: {fileID: 114147900656329976}
+  m_Layer: 11
   m_Name: Gobling
   m_TagString: Goblin
   m_Icon: {fileID: 0}
@@ -61,7 +63,7 @@ GameObject:
   - component: {fileID: 222294410726712292}
   - component: {fileID: 114458196698546766}
   - component: {fileID: 210639993522356444}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +83,7 @@ GameObject:
   - component: {fileID: 222015421780468676}
   - component: {fileID: 114510887961364088}
   - component: {fileID: 210293028067711278}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,8 +97,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1122245727785232}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.903, y: 0.648, z: 2.472415}
-  m_LocalScale: {x: 0.24253687, y: 0.16292205, z: 1}
+  m_LocalPosition: {x: 2, y: 2, z: 2.472415}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 224200912503594656}
   - {fileID: 224648009501852190}
@@ -110,8 +112,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1148490325347194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: -2.8, z: 0}
-  m_LocalScale: {x: 2.373, y: 2.4551, z: 1}
+  m_LocalPosition: {x: 2, y: -2.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4479615856664708}
   m_Father: {fileID: 0}
@@ -235,7 +237,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2.5
 --- !u!95 &95238514859527146
 Animator:
   serializedVersion: 3
@@ -254,6 +256,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95418897017291848
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1148490325347194}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8c0e3b8fc1a17b4290b6af2fc20c05f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114147900656329976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1148490325347194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542deb6843a291e499dfc88a8467a452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  speed: 1
 --- !u!114 &114271027649810002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -607,7 +640,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300002, guid: 4b528f89b5eb8524b9866ea8c81dfc59, type: 3}
   m_Color: {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
   m_FlipX: 0
   m_FlipY: 0
