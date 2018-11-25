@@ -15,23 +15,25 @@ public class DialogueManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
         sentences = new Queue<string>();
 	}
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(List<List<string>> listOfDialogue)
     {
-        //animator.SetBool("IsOpen", true);
-
         animator.SetTrigger("FadeIn");
-        nameText.text = dialogue.name; 
-        sentences.Clear();
+        nameText.text = gameObject.name;
+        int index = Random.Range(0, listOfDialogue.Count);
+        List<string> dialogue = listOfDialogue[index];
 
-        foreach(string sentence in dialogue.sentences)
+        sentences.Clear();
+        foreach (string sentence in dialogue)
         {
             sentences.Enqueue(sentence);
         }
 
         DisplayNewSentence();
+        
     }
 
     public void DisplayNewSentence()
@@ -45,9 +47,10 @@ public class DialogueManager : MonoBehaviour {
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
+        StartCoroutine(WaitFiveSeconds());
     }
 
-    IEnumerator TypeSentence (string sentence)
+    IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
@@ -56,10 +59,40 @@ public class DialogueManager : MonoBehaviour {
             yield return null;
         }
     }
-    
+
+    IEnumerator WaitFiveSeconds()
+    {
+        yield return new WaitForSeconds(2.0f);
+        DisplayNewSentence();
+    }
+
+
     void EndDialogue()
     {
         animator.SetTrigger("FadeOut");
     }
-	
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+
+        Debug.Log("objet: " + gameObject.tag + " collision with: " + collision.gameObject);
+
+        if ((collision.gameObject.tag == "Goblin") && (gameObject.tag == "Player"))
+        {
+            List<List<string>> listOfPlayerToGoblin = FindObjectOfType<DialogueList>().listOfPlayerToGoblin;
+            StartDialogue(listOfPlayerToGoblin);
+        }
+        else if ((collision.gameObject.tag == "Player") && (gameObject.tag == "Goblin"))
+        {
+            List<List<string>> listOfGoblinToPlayer = FindObjectOfType<DialogueList>().listOfGoblinToPlayer;
+            StartDialogue(listOfGoblinToPlayer);
+        }
+        else if ((collision.gameObject.tag == "Goblin") && (gameObject.tag == "Goblin"))
+        {
+            List<List<string>> listOfGoblinToGoblin = FindObjectOfType<DialogueList>().listOfGoblinToGoblin;
+            StartDialogue(listOfGoblinToGoblin);
+        }
+    }
+
 }

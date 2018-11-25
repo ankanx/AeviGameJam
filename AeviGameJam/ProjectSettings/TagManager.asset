@@ -9,6 +9,7 @@ TagManager:
   - FadePanel
   - FadePanelWorld
   - Inventory
+  - Goblin
   layers:
   - Default
   - TransparentFX
