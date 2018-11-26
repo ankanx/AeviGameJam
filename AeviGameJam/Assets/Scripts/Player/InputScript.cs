@@ -2,13 +2,13 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class InputScript : NetworkBehaviour
+public class InputScript : MonoBehaviour
 {
 
     [HideInInspector]
     public bool facingRight = true;
-    [HideInInspector]
-    public float moveForce = 365f;
+
+    public float moveMultiplier = 1.5f;
     public float maxSpeed = 5f;
     public GameObject menu;
 
@@ -18,6 +18,8 @@ public class InputScript : NetworkBehaviour
     public AudioClip audio_jump;
     public AudioClip audio_walk;
     public AudioSource audio_source;
+    public float horizvect;
+    public float verticalvect;
 
 
     void Start()
@@ -25,24 +27,12 @@ public class InputScript : NetworkBehaviour
 
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
+        rigidbody2d.gravityScale = 0;
     }
 
-    public override void OnStartAuthority()
-    {
-        transform.gameObject.tag = "Player";
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && menu.transform.localScale != new Vector3(1, 1, 1))
-        {
-            menu.transform.localScale = new Vector3(1, 1,1);
-        }
-        else if(Input.GetButtonDown("Cancel") && menu.transform.localScale != new Vector3(0, 0, 0))
-        {
-            menu.transform.localScale = new Vector3(0, 0,0);
-        }
+
     }
 
     void FixedUpdate()
@@ -50,48 +40,24 @@ public class InputScript : NetworkBehaviour
         float h = Input.GetAxisRaw("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
 
-        Vector2 current = new Vector2(h, v);
+        Vector2 movementVector = new Vector2(h , v);
 
-        if(current != Vector2.zero && rigidbody2d.bodyType == RigidbodyType2D.Dynamic)
+        
+        if(movementVector != Vector2.zero && rigidbody2d.bodyType == RigidbodyType2D.Dynamic)
         {
-            animator.SetBool("isWalking", true);
-            animator.SetFloat("input_x", current.x);
-            animator.SetFloat("input_y", current.y);
-
+            animator.SetBool("IsWalking", true);
+            animator.SetFloat("InputX", movementVector.x);
+            animator.SetFloat("InputY", movementVector.y);
+            horizvect = h;
+            verticalvect = v;
         }
         else
         {
-            animator.SetBool("isWalking", false);
+            animator.SetBool("IsWalking", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            Debug.Log("some");
-            GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>().AddItem("sword");
-        }
-
-
-
-        //animator.SetFloat("Speed", Mathf.Abs(h));
-        /*
-        if ((Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)  && grounded)
-          {
-          rb2d.velocity = new Vector2(0, 0);
-          
-        }*/
-
-
-        if (h * rigidbody2d.velocity.x < maxSpeed)
-            rigidbody2d.AddForce(Vector2.right * h * moveForce);
-
-        if (Mathf.Abs(rigidbody2d.velocity.x) > maxSpeed)
-            rigidbody2d.velocity = new Vector2(Mathf.Sign(rigidbody2d.velocity.x) * maxSpeed, rigidbody2d.velocity.y);
-
-        if (v * rigidbody2d.velocity.y < maxSpeed)
-            rigidbody2d.AddForce(Vector2.up * v * moveForce);
-
-        if (Mathf.Abs(rigidbody2d.velocity.y) > maxSpeed)
-            rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, Mathf.Sign(rigidbody2d.velocity.y) * maxSpeed);
+        movementVector = movementVector * moveMultiplier;
+        rigidbody2d.MovePosition(rigidbody2d.position + movementVector * Time.deltaTime);
 
     }
 }

@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - SceneLoader
+  - GameHandler
+  - FadePanel
+  - FadePanelWorld
+  - Inventory
+  - Goblin
+  - Checkpoint
+  - BigGoblin
   layers:
   - Default
   - TransparentFX
@@ -15,11 +22,11 @@ TagManager:
   - 
   - 
   - AnimationsUI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - MapIcon
+  - Player
+  - Enemy
+  - Ground
+  - bubble
   - 
   - 
   - 
@@ -50,4 +57,7 @@ TagManager:
     locked: 0
   - name: UiAnim
     uniqueID: 2270909789
+    locked: 0
+  - name: Enemy
+    uniqueID: 2601026989
     locked: 0
